@@ -21,16 +21,15 @@ CHIP RAM64 {
     * into the memory location specified by address.  This value becomes 
     * available through the out output starting from the next time step. 
 
-    DMux8Way(in=load, sel=address[3..5], a=l0, b=l1, c=l2, d=l3, e=l4, f=l5, g=l6, h=l7);
+    DMux8Way(in=load, sel=address[0..2], a=loadA, b=loadB, c=loadC, d=loadD, e=loadE, f=loadF, g=loadG, h=loadH);
+    RAM8(in=in, load=loadA, address=address[3..5], out=outA);
+    RAM8(in=in, load=loadB, address=address[3..5], out=outB);
+    RAM8(in=in, load=loadC, address=address[3..5], out=outC);
+    RAM8(in=in, load=loadD, address=address[3..5], out=outD);
+    RAM8(in=in, load=loadE, address=address[3..5], out=outE);
+    RAM8(in=in, load=loadF, address=address[3..5], out=outF);
+    RAM8(in=in, load=loadG, address=address[3..5], out=outG);
+    RAM8(in=in, load=loadH, address=address[3..5], out=outH);
 
-    RAM8(in=in, load=l0, address=address[0..2], out=o0);
-    RAM8(in=in, load=l1, address=address[0..2], out=o1);
-    RAM8(in=in, load=l2, address=address[0..2], out=o2);
-    RAM8(in=in, load=l3, address=address[0..2], out=o3);
-    RAM8(in=in, load=l4, address=address[0..2], out=o4);
-    RAM8(in=in, load=l5, address=address[0..2], out=o5);
-    RAM8(in=in, load=l6, address=address[0..2], out=o6);
-    RAM8(in=in, load=l7, address=address[0..2], out=o7);
-    
-    Mux8Way16(a=o0, b=o1, c=o2, d=o3, e=o4, f=o5, g=o6, h=o7, sel=address[3..5], out=out);
+Mux8Way16(a=outA, b=outB, c=outC, d=outD, e=outE, f=outF, g=outG, h=outH, sel=address[0..2], out=out);
 }
