@@ -17,6 +17,7 @@ CHIP RAM8 {
     PARTS:
     // Put your code here:
     // using a DMUX8way 16 to get in the 8 registers and another Dmux 
+
     DMux8Way16(in = in, sel = address, a = t1, b = t2, c = t3, d = t4, e = t5, f = t6, g = t7, h = t8);
     DMux8Way(in = load, sel = address, a = l1, b = l2, c = l3, d = l4, e = l5, f = l6, g = l7, h = l8);
 
